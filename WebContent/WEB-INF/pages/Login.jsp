@@ -1,7 +1,8 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <h2>Log In</h2>
-
+<div class="container">
+<div class="d-flex justify-content-center h-100">
 <form:form method="POST" modelAttribute="admin" action="authenticate">
 	<table>
 		<tr>
@@ -16,3 +17,5 @@
 	</table>
 	<input type="submit" value="Log In"></input>
 </form:form>
+</div>
+</div>
