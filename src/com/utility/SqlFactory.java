@@ -6,7 +6,7 @@ import com.model.Client;
 public class SqlFactory 
 {
 	@SuppressWarnings("rawtypes")
-	public static String findQuery(Class cls)
+	public static String find(Class cls)
 	{
 		String sql = "";
 		
