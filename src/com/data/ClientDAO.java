@@ -13,6 +13,7 @@ import java.util.List;
 import com.model.Client;
 import com.model.DTO;
 import com.model.Database;
+import com.utility.SqlFactory;
 
 public class ClientDAO implements ClientDataAccessInterface 
 {	
@@ -113,12 +114,7 @@ public class ClientDAO implements ClientDataAccessInterface
 		{
 			conn = db.open();
 			
-			PreparedStatement sql = conn.prepareStatement(
-					"INSERT INTO `client` (`id`, `time`, `first`, `last`, `birthday`, "
-					+ "`phoneNumber`, `diagnosis`, `parentA`, `parentB`, `email`, "
-					+ "`address`, `reason`, `funding`, `availableDay`, `availableTime`, `notes`) VALUES "
-					+ "(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-					);
+			PreparedStatement sql = conn.prepareStatement(SqlFactory.create(Client.class));
 			
 			sql.setString(1, localtime);
 			sql.setString(2, client.getFirstName());
@@ -166,12 +162,7 @@ public class ClientDAO implements ClientDataAccessInterface
 		{
 			conn = db.open();
 			
-			PreparedStatement sql = conn.prepareStatement(
-					"UPDATE client SET `time` = '?', `first` = '?', `last` = '?', `birthday` = '?',"
-					+ "`phoneNumber` = '?', `diagnosis` = '?', `parentA` = '?', `parentB` = '?', `email` = '?',"
-					+ "`address` = '?', `reason` = '?', `funding` = '?', `availableDay` = '?', `availableTime` = '?',"
-					+ "`notes` = '?' WHERE `client`.`id` = '?'"
-					);
+			PreparedStatement sql = conn.prepareStatement(SqlFactory.update(Client.class));
 			
 			sql.setString(1, client.getTimeStamp());
 			sql.setString(2, client.getFirstName());
@@ -218,7 +209,7 @@ public class ClientDAO implements ClientDataAccessInterface
 		{
 			conn = db.open();
 			
-			PreparedStatement sql = conn.prepareStatement("DELETE FROM `client`	WHERE `client`.`id` = '?'");
+			PreparedStatement sql = conn.prepareStatement(SqlFactory.delete(Client.class));
 			
 			sql.setInt(1, ID);
 			

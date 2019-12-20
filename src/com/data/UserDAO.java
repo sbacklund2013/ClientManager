@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import com.model.Admin;
 import com.model.DTO;
 import com.model.Database;
+import com.utility.SqlFactory;
 
 public class UserDAO implements UserDataAccessInterface 
 {
@@ -27,8 +28,7 @@ public class UserDAO implements UserDataAccessInterface
 		{
 			conn = db.open();
 			
-			PreparedStatement sql = conn.prepareStatement("SELECT * FROM admin WHERE `username` = ? "
-					+ " AND `password` = ?");
+			PreparedStatement sql = conn.prepareStatement(SqlFactory.find(Admin.class));
 			
 			sql.setString(1, admin.getUsername());
 			sql.setString(2, admin.getPassword());
