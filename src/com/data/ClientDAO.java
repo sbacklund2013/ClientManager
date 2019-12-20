@@ -35,9 +35,11 @@ public class ClientDAO implements ClientDataAccessInterface
 		{	
 			conn = db.open();
 			
-			String sql = "SELECT * FROM client WHERE id = " + ID;
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			PreparedStatement sql = conn.prepareStatement(SqlFactory.find(Client.class));
+			
+			sql.setInt(1, ID);
+			
+			ResultSet rs = sql.executeQuery();
 			
 			if (rs.next())
 			{
@@ -72,8 +74,9 @@ public class ClientDAO implements ClientDataAccessInterface
 		{
 			conn = db.open();
 			
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM client");
+			PreparedStatement sql = conn.prepareStatement(SqlFactory.findAll(Client.class));
+			
+			ResultSet rs = sql.executeQuery();
 			
 			int rowCount = 0;
 			while(rs.next())
@@ -234,7 +237,6 @@ public class ClientDAO implements ClientDataAccessInterface
 	@Override
 	public DTO<List> search(String query)
 	{
-		query = "'%" + query + "%'";
 		Connection conn = null;
 		List<Client> results = new ArrayList<>();
 		DTO<List> dto = null;
@@ -243,14 +245,13 @@ public class ClientDAO implements ClientDataAccessInterface
 		{
 			conn = db.open();
 			
-			String sql = "SELECT * FROM `client` WHERE `time` LIKE " + query + " OR `first` LIKE " + query
-					+ " OR `last` LIKE " + query + " OR `birthday` LIKE " + query + " OR `phoneNumber` LIKE " + query 
-					+ " OR `diagnosis` LIKE " + query + " OR `parentA` LIKE " + query + " OR `parentB` LIKE " + query
-					+ " OR `email` LIKE " + query + " OR `address` LIKE " + query + " OR `reason` LIKE " + query 
-					+ " OR `funding` LIKE " + query + " OR `availableDay` LIKE " + query + " OR `availableTime` LIKE " + query;
+			PreparedStatement sql = conn.prepareStatement(SqlFactory.generalSearch(Client.class));
 			
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			for (int i = 1; i <= 14; i++) { sql.setString(i, query); }
+			
+			System.out.println(sql.toString());
+			
+			ResultSet rs = sql.executeQuery();
 			
 			int rowCount = 0;
 			while (rs.next())
@@ -290,11 +291,12 @@ public class ClientDAO implements ClientDataAccessInterface
 		{
 			conn = db.open();
 			
-			String sql = "SELECT * FROM `client` WHERE `availableDay` LIKE " + query
-					+ " OR `availableTime` LIKE " + query;
+			PreparedStatement sql = conn.prepareStatement(SqlFactory.timeSearch(Client.class));
 			
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			sql.setString(1, query);
+			sql.setString(2, query);
+			
+			ResultSet rs = sql.executeQuery();
 			
 			int rowCount = 0;
 			while (rs.next())
