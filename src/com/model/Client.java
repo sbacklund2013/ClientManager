@@ -64,7 +64,7 @@ public class Client {
 		this.ID = 0;
 	}
 	
-	public Client(int ID, String timeStamp, String firstName, String lastName, String birthDate, String diagnosis, String phoneNumber, String parent1, String parent2, String email, String address, String reason, String funding, String availableDay, String availableTime, String notes) 
+	public Client(int ID, String timeStamp, String firstName, String lastName, String birthDate, String phoneNumber, String diagnosis, String parent1, String parent2, String email, String address, String reason, String funding, String availableDay, String availableTime, String notes) 
 	{
 		this.timeStamp = timeStamp;
 		this.firstName = firstName;

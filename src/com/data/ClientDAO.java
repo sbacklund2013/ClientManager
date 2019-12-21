@@ -82,7 +82,7 @@ public class ClientDAO implements ClientDataAccessInterface
 			while(rs.next())
 			{	
 				clients.add(new Client(rs.getInt("ID"), rs.getString("time"), rs.getString("first"), rs.getString("last"), 
-						rs.getString("birthday"), rs.getString("diagnosis"), rs.getString("phoneNumber"), rs.getString("parentA"), 
+						rs.getString("birthday"), rs.getString("phoneNumber"), rs.getString("diagnosis"), rs.getString("parentA"), 
 						rs.getString("parentB"), rs.getString("email"), rs.getString("address"), rs.getString("reason"),
 						rs.getString("funding"), rs.getString("availableDay"), rs.getString("availableTime"), rs.getString("notes")
 						));
