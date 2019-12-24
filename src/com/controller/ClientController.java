@@ -169,8 +169,6 @@ public class ClientController
 	      diagnosisList.add("2:30-3:00");
 	      diagnosisList.add("3:00-3:30");
 	      diagnosisList.add("3:30-4:00");
-	      diagnosisList.add("3:00-3:30");
-	      diagnosisList.add("3:30-4:00");
 	      diagnosisList.add("4:00-4:30");
 	      diagnosisList.add("4:30-5:00");
 	      diagnosisList.add("5:00-5:30");

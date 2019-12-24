@@ -1,9 +1,9 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<body>
+<div>
 	<h1 class="text-center">NMTSA Refferal</h1>
-	<p class="text-center">
+	<p class="text-center" style="font-size: 18px;">
 		<br>In order to better understand your therapy and scheduling
 		needs, please fill out the following information. Should you have
 		further questions, please feel free to contact us at <a
@@ -54,9 +54,13 @@
 
 					<form:label style="font: 18px Roboto, sans-serif;" path="diagnosis">Diagnosis:</form:label>
 					</br>
-					<form:checkboxes class="checkbox" path="diagnosis"
-						items="${diagnosisList}" />
-
+					<c:forEach var="item" items="${diagnosisList}">
+						<span class="checkbox">					
+						<form:checkbox path="diagnosis" value="${item}"/>
+						<form:label style="font: 18px Roboto, sans-serif;" path="diagnosis">${item}</form:label>
+						</span>
+					</c:forEach>
+					
 				</div>
 			</div>
 			<div class="form-row">
@@ -88,20 +92,28 @@
 					<form:label style="font: 18px Roboto, sans-serif;"
 						path="availableDay">Days Available:</form:label>
 					</br>
-					<form:checkboxes class="checkbox" path="availableDay"
-						items="${availableDay}" />
+					<c:forEach var="item" items="${availableDay}">
+						<span class="checkbox">					
+						<form:checkbox class="checkbox" path="availableDay" value="${item}"/>
+						<form:label style="font: 18px Roboto, sans-serif;" path="availableDay">${item}</form:label>
+						</span>
+					</c:forEach>
+					
 				</div>
 			</div>
-			
+
 			<div class="form-row">
 				<div class="col">
 
 					<form:label style="font: 18px Roboto, sans-serif;"
 						path="availableTime">Times Available:</form:label>
 					</br>
-					<form:checkboxes class="checkbox" path="availableTime"
-						items="${availableTime}" />
-
+					<c:forEach var="item" items="${availableTime}">
+						<span class="checkbox">					
+						<form:checkbox class="checkbox" path="availableTime" value="${item}"/>
+						<form:label style="font: 18px Roboto, sans-serif;" path="availableTime">${item}</form:label>
+						</span>
+					</c:forEach>
 				</div>
 			</div>
 			<div class="form-row">
@@ -116,4 +128,4 @@
 
 		</form:form>
 	</div>
-</body>
+</div>
