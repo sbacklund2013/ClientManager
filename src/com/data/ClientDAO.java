@@ -249,8 +249,6 @@ public class ClientDAO implements ClientDataAccessInterface
 			
 			for (int i = 1; i <= 14; i++) { sql.setString(i, query); }
 			
-			System.out.println(sql.toString());
-			
 			ResultSet rs = sql.executeQuery();
 			
 			int rowCount = 0;
