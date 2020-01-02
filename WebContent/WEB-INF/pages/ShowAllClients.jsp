@@ -88,7 +88,36 @@
 				<td>${clients.funding}</td>
 				<td>${clients.availableDay}</td>
 				<td>${clients.availableTime}</td>
-				<td>${clients.notes}</td>
+				<td>
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#details${clients.ID}">More</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="details${clients.ID}" tabindex="-1" role="dialog" aria-labelledby="detailsBody" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="detailsBody">${clients.firstName} ${clients.lastName}</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form:form class="form-horizontal" action="edit" modelAttribute="clients" method="POST">
+										<div class="form-group">
+											<form:label path="timeStamp" class="control-label col-xs-2">Time Stamp</form:label>
+											<div class="col-xs-9"><form:input path="timeStamp" class="form-control"/></div>
+										</div>
+									</form:form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Save changes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>
