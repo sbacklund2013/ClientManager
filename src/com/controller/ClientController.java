@@ -55,7 +55,7 @@ public class ClientController
 	@RequestMapping(path = "/appointments", method = RequestMethod.GET)
 	public ModelAndView showAppointments()
 	{
-		return new ModelAndView("ShowAllClients", "client", new Client());
+		return new ModelAndView("AppointmentsPage", "client", new Client());
 	}
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)

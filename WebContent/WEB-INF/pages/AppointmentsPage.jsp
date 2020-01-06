@@ -5,7 +5,7 @@
 	<p class="text-center"><br>Choose a day of the week and time of day.<br><br></p>
 	<p class="weekDays-selector">
 	
-	<form:form method="POST" modelAttribute="client" action="doReg">
+	<form:form method="POST" modelAttribute="client" action="available">
 		<div>
 			<table>
 				<tr> 
