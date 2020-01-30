@@ -13,7 +13,8 @@
 	<div class="form-group" style="width: 60%">
 		<form:form method="POST" modelAttribute="client" action="reg">
 			<div class="form-row">
-				<div class="col">
+			
+				<div class="col">					
 					<form:label style="font: 18px Roboto, sans-serif;" path="firstName">Client First Name:</form:label>
 					<form:input class="form-control" path="firstName" />
 					<form:errors path="firstName" />
@@ -55,10 +56,11 @@
 					<form:label style="font: 18px Roboto, sans-serif;" path="diagnosis">Diagnosis:</form:label>
 					</br>
 					<c:forEach var="item" items="${diagnosisList}">
-						<span class="checkbox">					
-						<form:checkbox path="diagnosis" value="${item}"/>
-						<form:label style="font: 18px Roboto, sans-serif;" path="diagnosis">${item}</form:label>
-						</span>
+						<div class="custom-control custom-checkbox custom-control-inline">
+						<form:checkbox path="diagnosis" class="custom-control-input" id="${item}" value="${item}"/>
+						<form:label class="custom-control-label" path="diagnosis" for="${item}">${item}</form:label>
+						</div>	
+						
 					</c:forEach>
 					
 				</div>
@@ -93,10 +95,10 @@
 						path="availableDay">Days Available:</form:label>
 					</br>
 					<c:forEach var="item" items="${availableDay}">
-						<span class="checkbox">					
-						<form:checkbox class="checkbox" path="availableDay" value="${item}"/>
-						<form:label style="font: 18px Roboto, sans-serif;" path="availableDay">${item}</form:label>
-						</span>
+						<div class="custom-control custom-checkbox custom-control-inline">				
+						<form:checkbox class="custom-control-input" path="availableDay" id="${item}" value="${item}"/>
+						<form:label class="custom-control-label" path="availableDay" for="${item}">${item}</form:label>
+						</div>	
 					</c:forEach>
 					
 				</div>
@@ -108,11 +110,11 @@
 					<form:label style="font: 18px Roboto, sans-serif;"
 						path="availableTime">Times Available:</form:label>
 					</br>
-					<c:forEach var="item" items="${availableTime}">
-						<span class="checkbox">					
-						<form:checkbox class="checkbox" path="availableTime" value="${item}"/>
-						<form:label style="font: 18px Roboto, sans-serif;" path="availableTime">${item}</form:label>
-						</span>
+					<c:forEach var="item" items="${availableTime}">					
+					<div class="custom-control custom-checkbox custom-control-inline">				
+						<form:checkbox class="custom-control-input" path="availableTime" id="${item}" value="${item}"/>
+						<form:label class="custom-control-label" path="availableTime" for="${item}">${item}</form:label>
+						</div>	
 					</c:forEach>
 				</div>
 			</div>
